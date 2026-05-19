@@ -1,17 +1,20 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using TicTacToe.Models;
 
 namespace TicTacToe;
 
 public partial class MainWindow : Window
-{
+{   
+    Selector selector;
     Juego juego;
     public MainWindow()
     {
         InitializeComponent();
-
+        MessageBox.Show($"Elige el tipo de oponente deseado");
+        MessageBox.Show($"1.- Jugador\n2.- Bot aleatorio\n3.- Bot que prioriza el centro");
         juego = new Juego();
     }
 
@@ -27,7 +30,7 @@ public partial class MainWindow : Window
         }
 
         juego.JugadorActual = juego.Jugador1;
-}
+    }
 
     private void IA(){
         string simbolo_IA = juego.JugadorActual.Simbolo;
@@ -56,7 +59,7 @@ public partial class MainWindow : Window
         int randomNumber = random.Next(9);
         bool Jugado = false;
 
-        if(botones[4].Content == ""){
+        if(botones[4].Content != "X" && botones[4].Content != "O"){
             juego.Jugar(4);
             botones[4].Content = simbolo_IA;
         }
@@ -101,22 +104,37 @@ public partial class MainWindow : Window
             ReiniciarJuego();
             return;
         }
-
+    
         juego.CambiarTurno();
         
-        if (juego.JugadorActual == juego.Jugador2){
-            IACentro();
+        switch (juego.Jugador2.Nombre){
+            case "Jugador 2":
+                juego.CambiarTurno();
+            break;
 
-            if (juego.HayGanador()){
-                MessageBox.Show($"{juego.JugadorActual.Nombre} ganó");
-                DesactivarBotones();
-                ReiniciarJuego();
-                return;
-            }
+            case "Jugador aleatorio":
+                IA();
+                    if (juego.HayGanador()){
+                    MessageBox.Show($"{juego.JugadorActual.Nombre} ganó");
+                    DesactivarBotones();
+                    ReiniciarJuego();
+                    return;
+                }
+            break;
+
+            case "Jugador centro":
+                IACentro();
+                if (juego.HayGanador()){
+                    MessageBox.Show($"{juego.JugadorActual.Nombre} ganó");
+                    DesactivarBotones();
+                    ReiniciarJuego();
+                    return;
+                }
+            break;
+        }
 
             juego.CambiarTurno();
         }
-    }
 
     private void DesactivarBotones(){
         B0.IsEnabled = false;
