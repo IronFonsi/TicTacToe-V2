@@ -49,6 +49,31 @@ public partial class MainWindow : Window
         botones[randomNumber].Content = simbolo_IA;
     }
 
+    private void IACentro(){
+        string simbolo_IA = juego.JugadorActual.Simbolo;
+        Button[] botones = { B0, B1, B2, B3, B4, B5, B6, B7, B8 };
+        Random random = new Random();
+        int randomNumber = random.Next(9);
+        bool Jugado = false;
+
+        if(botones[4].Content == ""){
+            juego.Jugar(4);
+            botones[4].Content = simbolo_IA;
+        }
+        else{
+            do{
+            if(botones[randomNumber].Content == "X" || botones[randomNumber].Content == "O"){
+                randomNumber = random.Next(9); 
+            }
+            else{
+                Jugado = true;
+            } 
+        }while(Jugado == false);
+
+            juego.Jugar(randomNumber);
+            botones[randomNumber].Content = simbolo_IA;
+        }
+    } 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         Button boton = sender as Button;
@@ -80,7 +105,7 @@ public partial class MainWindow : Window
         juego.CambiarTurno();
         
         if (juego.JugadorActual == juego.Jugador2){
-            IA();
+            IACentro();
 
             if (juego.HayGanador()){
                 MessageBox.Show($"{juego.JugadorActual.Nombre} ganó");

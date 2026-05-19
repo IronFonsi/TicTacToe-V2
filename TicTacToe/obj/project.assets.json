@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ponch\\Documents\\CETYS\\POO\\Practica_TicTacToe\\TicTacToe\\Practica_TicTacToe.csproj",
+      "projectUniqueName": "C:\\Users\\Ponch\\Documents\\CETYS\\POO\\TicTacToe-V2\\TicTacToe\\Practica_TicTacToe.csproj",
       "projectName": "Practica_TicTacToe",
-      "projectPath": "C:\\Users\\Ponch\\Documents\\CETYS\\POO\\Practica_TicTacToe\\TicTacToe\\Practica_TicTacToe.csproj",
+      "projectPath": "C:\\Users\\Ponch\\Documents\\CETYS\\POO\\TicTacToe-V2\\TicTacToe\\Practica_TicTacToe.csproj",
       "packagesPath": "C:\\Users\\Ponch\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ponch\\Documents\\CETYS\\POO\\Practica_TicTacToe\\TicTacToe\\obj\\",
+      "outputPath": "C:\\Users\\Ponch\\Documents\\CETYS\\POO\\TicTacToe-V2\\TicTacToe\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ponch\\AppData\\Roaming\\NuGet\\NuGet.Config"
